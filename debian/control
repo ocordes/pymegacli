@@ -1,7 +1,7 @@
 Package: pymegacli
 Architecture: amd64
 Maintainer: Oliver Cordes
-Depends: debconf (>= 0.5.00), python (>= 2.7), megacli, sudo
+Depends: debconf (>= 0.5.00), python3 (>= 3.6), megacli, sudo
 Priority: optional
 Description: pymegacli wrapper around megacli
  This package is a python wrapper around the megacli tool.
@@ -10,4 +10,4 @@ Description: pymegacli wrapper around megacli
  The implementation is not complete, but the main program
  provides at least a test function for savety of all devices
  wich can be used in cron jobs.
-Version: 0.2.9-1
+Version: 0.2.10~1

@@ -1,10 +1,10 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 # mcli.py
 #
 #
 # written by: Oliver Cordes 2015-11-13
-# changed by: Oliver Cordes 2017-02-06
+# changed by: Oliver Cordes 2023-01-05
 #
 #
 
@@ -14,7 +14,7 @@ import socket
 import getopt
 
 # for email sending
-import cStringIO
+from io import StringIO
 import smtplib
 from email.mime.text import MIMEText
 
@@ -22,9 +22,9 @@ from email.mime.text import MIMEText
 from pymegacli import PyMegacli
 
 
-__version__ = "0.2.9"
-__date__    = '2017-02-06'
-__needs__   = 2.7
+__version__ = "0.2.10"
+__date__    = '2023-01-05'
+__needs__   = 3.6
 __author__  = "Oliver Cordes"
 
 
@@ -79,7 +79,7 @@ long_options = ['info', 'help', 'nagios', 'status', 'mail=', 'from=',
 
 try:
     opts, args = getopt.getopt( sys.argv[1:], 'h?a:', long_options )
-except getopt.GetoptError, s:
+except getopt.GetoptError(s):
     print( 'Error while parsing command parameters!' )
     syntax( 1 )
 
@@ -95,7 +95,7 @@ for key,val in opts:
     elif ( key == '--ldinfo' ):
         _action = 'ldinfo'
     elif ( key == '--silence' ):
-	_action = 'silence'
+        _action = 'silence'
 
     elif ( key == '-a' ):
         _adaptor = int( val )
@@ -150,7 +150,7 @@ elif ( _action == 'silence' ):
 elif ( _action == 'status' ):
     if ( _do_mail ):
         # change the output direction
-        output = cStringIO.StringIO()
+        output = StringIO()
         stdout_old = sys.stdout
         sys.stdout = output
 
@@ -161,7 +161,7 @@ elif ( _action == 'status' ):
         sys.stdout = stdout_old
         output.seek( 0 )
 
-        # if error the nsend message
+        # if error then send message
         if ( ret != 0 ):
             msg = MIMEText( output.read() )
             msg['Subject'] = 'megacli RAID status on %s' % socket.gethostname()
@@ -186,11 +186,11 @@ elif ( _action == 'status' ):
             _mail_to_s = _mail_to.split( ',' )
             try:
                 s.sendmail( _mail_from, _mail_to_s, msg.as_string())
-            except smtplib.SMTPRecipientsRefused, errmsg:
+            except smtplib.SMTPRecipientsRefused(errmsg):
                 # error messages for each sender
                 for i in errmsg.recipients:
                     print( 'Mail problem for %s: %s' % ( i, errmsg.recipients[i] ) )
-            except smtplib.SMTPDataError, errmsg:
+            except smtplib.SMTPDataError(errmsg):
                 print( 'Mail problem: %s' % errmsg )
             s.quit()
 

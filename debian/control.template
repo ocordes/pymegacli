@@ -1,7 +1,7 @@
 Package: pymegacli
 Architecture: amd64
 Maintainer: Oliver Cordes
-Depends: debconf (>= 0.5.00), python (>= 2.7), megacli, sudo
+Depends: debconf (>= 0.5.00), python3 (>= 3.6), megacli, sudo
 Priority: optional
 Description: pymegacli wrapper around megacli
  This package is a python wrapper around the megacli tool.

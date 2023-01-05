@@ -13,8 +13,8 @@ class PyMegacli( object ):
         self._adaptor  = adaptor
         self._verbose  = verbose
         self._info     = info
-	
-	self._errorlog = []
+
+        self._errorlog = []
 
         ret = self._test_megacli()
 
@@ -29,7 +29,6 @@ class PyMegacli( object ):
             print( '  Serial No    : %s ' % self._adaptor_info['Serial No'] )
             print( '  FW Build     : %s' % self._adaptor_info['FW Package Build'] )
             print( '' )
-        
 
 
 
@@ -65,7 +64,7 @@ class PyMegacli( object ):
         line = p.stdout.readlines()
         lines = []
         for i in line:
-            lines.append( i.replace( '\n', '' ) )
+            lines.append( i.decode('utf8').replace( '\n', '' ) )
 
         return_code = p.returncode
         return return_code, lines
@@ -238,7 +237,7 @@ class PyMegacli( object ):
                 state = 'Fail'
             did = '[%s:%s]' % ( i['Enclosure Device ID'], i['Slot Number'] )
             print( '%-7s %-47s %-10s %-6i %s' % ( did, i['Inquiry Data'], i['size'], i['error'], state ) )
-            if i.has_key( 'Drive\'s position' ):
+            if  'Drive\'s position'  in i:
                 print( '   %s' % ( i['Drive\'s position'] ) )
             elif( i['Firmware state'].find( 'Hotspare' ) != -1 ):
                 print( '   HotSpare' )
@@ -291,7 +290,7 @@ class PyMegacli( object ):
             if ( i['state'] == 0 ):
               state = 'OK'
             elif ( i['state'] == 2 ):
-	      state = 'Partially Degraded or Rebuild'
+              state = 'Partially Degraded or Rebuild'
             else:
               state = 'Fail'
             print( '%-3i  %-39s Raid-%-2i %-8s %-11s %s' % ( i['id'], i['Name'], i['raid'], i['Number Of Drives'], i['Size'], state ) )
@@ -337,8 +336,8 @@ class PyMegacli( object ):
         if ( error == False ):
             print( 'Virtual drives status: OK' )
 
-	if ( self.write_errorlog() == 1 ):
-	    gerror = True
+        if ( self.write_errorlog() == 1 ):
+            gerror = True
 
         if ( gerror ):
             return 1
@@ -376,20 +375,20 @@ class PyMegacli( object ):
         return 0
 
     def write_errorlog( self ):
-	if ( len( self._errorlog ) > 0 ):
-	   print( 'Errorlog:' )
+        if ( len( self._errorlog ) > 0 ):
+           print( 'Errorlog:' )
            nr = 1
            for i in self._errorlog:
              print( '%3i: %s' % ( nr, i ) )
              nr +=1
            return 1
         else:
-	   return 0
-                
+           return 0
+
 
     def geteventlog( self ):
         # megacli AdpEventLog GetEvents {info warning critical fatal} {f test.log }  a0
-	return 
+        return 
 
 
     def alarm_silence( self ):
