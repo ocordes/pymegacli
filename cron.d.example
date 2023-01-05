@@ -1,0 +1,6 @@
+# /etc/cron.d/pymegali: crontab fragment
+
+PATH=/bin:/usr/bin:/sbin:/usr/sbin
+
+# check the drives every 15 minutes
+*/15 * * * *   root [ -x /usr/bin/mcli ] && /usr/bin/mcli --status --mail zrg@astro.uni-bonn.de

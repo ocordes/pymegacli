@@ -1,0 +1,75 @@
+pymegacl (0.2.7-1) stable; urgency=medium
+
+  * add some debug info code for unknown states of pysical drives
+
+ -- Oliver-Mark Cordes <ocordes@astro.uni-bonn.de>  Mon, 23 Jan 2017 07:45:14 +0100
+
+pymegacl (0.2.6-1) stable; urgency=medium
+
+  * Add detection for HotSpare in info
+
+ -- Oliver-Mark Cordes <ocordes@astro.uni-bonn.de>  Thu, 05 Jan 2016 08:33:10 +0200
+
+pymegacl (0.2.5-1) stable; urgency=medium
+
+  * correct the rebuild detection
+  * fix minor BUGs
+
+ -- Oliver-Mark Cordes <ocordes@astro.uni-bonn.de>  Thu, 05 Jan 2017 07:33:10 +0200
+
+pymegacl (0.2.4-1) stable; urgency=medium
+
+  * check for keywords before printing ldinfo variables
+
+ -- Oliver-Mark Cordes <ocordes@astro.uni-bonn.de>  Wed, 31 Aug 2016 11:03:10 +0200
+
+pymegacl (0.2.3-1) stable; urgency=medium
+
+  * add a --ldinfo with precise information about logical arrays 
+  * remove the creation of MegaSAS.log for the megacli commands
+
+ -- Oliver-Mark Cordes <ocordes@astro.uni-bonn.de>  Wed, 31 Aug 2016 10:29:18 +0200
+
+pymegacl (0.2.2-1)  stable; urgency=medium
+
+  * fix info command for Raid 60 systems
+
+ -- Oliver-Mark Cordes <ocordes@astro.uni-bonn.de>  Fri, 29 Jan 2016 09:25:47 +0100
+
+pymegacl (0.2.0-4) stable; urgency=medium
+
+  *  really add sudo in package dependencies
+
+ -- Oliver-Mark Cordes <ocordes@astro.uni-bonn.de>  Wed, 13 Jan 2016 14:27:59 +0100
+
+pymegacl (0.2.0-3) stable; urgency=medium
+
+  * add some features for nagios
+  * add sudo in package dependencies
+
+ -- Oliver-Mark Cordes <ocordes@astro.uni-bonn.de>  Wed, 13 Jan 2016 14:17:19 +0100
+
+pymegacl (0.1.1-3) stable; urgency=medium
+
+  * remove a debug entry
+
+ -- Oliver-Mark Cordes <ocordes@astro.uni-bonn.de>  Mon, 11 Jan 2016 14:22:33 +0100
+
+pymegacl (0.1.1-2) stable; urgency=medium
+
+  * fix a BUG in the build process
+
+ -- Oliver-Mark Cordes <ocordes@astro.uni-bonn.de>  Mon, 11 Jan 2016 14:17:03 +0100
+
+pymegacl (0.1.1-1) stable; urgency=medium
+
+  * add nagios basic support
+  * add special SMTP server specification to send status mails
+
+ -- Oliver-Mark Cordes <ocordes@astro.uni-bonn.de>  Mon, 11 Jan 2016 13:44:36 +0100
+
+pymegacl (0.1.0-1) stable; urgency=medium
+
+  * first version
+
+ -- Oliver Cordes <ocorde@astro.uni-bonn.de>  Mon, 23 Nov 2015 08:37:25 +0100

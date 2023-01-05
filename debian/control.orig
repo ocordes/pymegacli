@@ -1,0 +1,13 @@
+Package: pymegacli
+Architecture: amd64
+Maintainer: Oliver Cordes
+Depends: debconf (>= 0.5.00), python (>= 2.7), megacli
+Priority: optional
+Version: 0.1.0
+Description: pymegacli wrapper around megacli
+ This package is a python wrapper around the megacli tool.
+ It works for LSI and compatible RAID controllers.
+ .
+ The implementation is not complete, but the main program
+ provides at least a test function for savety of all devices
+ wich can be used in cron jobs.
